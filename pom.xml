@@ -5,9 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.example</groupId>
-  <artifactId>WebNguoiNoiTieng</artifactId>
+  <artifactId>WebNguoiNoiTieng_ver1</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
+
+<!--  <name>WebNguoiNoiTieng_ver1 Maven Webapp</name>-->
+<!--  &lt;!&ndash; FIXME change it to the project's website &ndash;&gt;-->
+<!--  <url>http://www.example.com</url>-->
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
