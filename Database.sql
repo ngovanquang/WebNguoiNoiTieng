@@ -67,3 +67,18 @@ use webnguoinoitieng;
     
     ALTER TABLE comment ADD CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES user(id);
     ALTER TABLE comment ADD CONSTRAINT fk_comment_news FOREIGN KEY (new_id) REFERENCES news(id);
+    
+    CREATE TABLE rating (
+    id bigint NOT NULL PRIMARY KEY auto_increment,
+    rate integer not null,
+    user_id bigint not null,
+    new_id bigint not null,
+    
+    createddate TIMESTAMP NULL,
+    modifieddate TIMESTAMP NULL,
+    createdby VARCHAR(255) NULL,
+    modifiedby VARCHAR(255) NULL
+    );
+
+    ALTER TABLE rating ADD CONSTRAINT fk_rating_user FOREIGN KEY (user_id) REFERENCES user(id);
+    ALTER TABLE rating ADD CONSTRAINT fk_rating_news FOREIGN KEY (new_id) REFERENCES news(id);
