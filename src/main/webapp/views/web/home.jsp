@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>
@@ -62,195 +63,62 @@
       </div>
   
       <div class="site-section">
-        <div class="container">
-          <div class="row mb-5">
-            <div class="col-12">
-              <h2>Recent Posts</h2>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4 mb-4">
-              <div class="entry2">
-                <a href="<c:url value="/post"/>"><img src="<c:url value="/template/web/images/2-steve-jobs%20(2).jpg"/>" alt="Image" class="img-fluid rounded"></a>
-                <div class="excerpt">
-                <span class="post-category text-white bg-secondary mb-3">Công nghệ</span>
-  
-                <h2><a href="<c:url value="/post"/>">Steve Jobs</a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                  <figure class="author-figure mb-0 mr-3 float-left"><img src="<c:url value="/template/web/images/person_1.jpg"/>" alt="Image" class="img-fluid"></figure>
-                  <span class="d-inline-block mt-1">By <a href="#">Ngô Quang</a></span>
-                  <span>&nbsp;-&nbsp; October 18, 2020</span>
-                </div>
-                
-                  <p>Cuối những năm 1970, Steve Jobs cùng nhà đồng sáng lập Apple với Steve Wozniak, Mike Markkula, và một số người khác cùng nhau thiết kế, phát triển và đưa ra thị trường... </p>
-                  <p><a href="<c:url value="/post"/>">Read More</a></p>
-                </div>
+        <form action="<c:url value= '/trang-chu' />" id="formRecentPosts" method="get">
+          <div class="container">
+            <div class="row mb-5">
+              <div class="col-12">
+                <h2>Recent Posts</h2>
               </div>
             </div>
-            <div class="col-lg-4 mb-4">
-              <div class="entry2">
-                <a href="single.html"><img src="<c:url value="/template/web/images/img_2.jpg"/>" alt="Image" class="img-fluid rounded"></a>
-                <div class="excerpt">
-                <span class="post-category text-white bg-success mb-3">Nature</span>
-  
-                <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                  <figure class="author-figure mb-0 mr-3 float-left"><img src="<c:url value="/template/web/images/person_1.jpg"/>" alt="Image" class="img-fluid"></figure>
-                  <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                  <span>&nbsp;-&nbsp; July 19, 2019</span>
+            <div class="row">
+
+              <c:forEach var="item" items="${model.listResult}">
+                <div class="col-lg-4 mb-4">
+                  <div class="entry2">
+                    <a id="click_${item.id}" href="<c:url value='/post?id=${item.id}'/>"><img src="<c:url value="${item.thumbnail}"/>" alt="Image" class="img-fluid rounded" width="800px"></a>
+                    <div class="excerpt">
+                      <span class="post-category text-white bg-success mb-3">
+                        <c:forEach var="category" items="${categories}">
+                          <c:if test="${category.id == item.categoryid}">
+                            ${category.name}
+                          </c:if>
+                        </c:forEach>
+                      </span>
+
+                      <h2><a href="<c:url value='/post?id=${item.id}'/>">${item.title}</a></h2>
+                      <div class="post-meta align-items-center text-left clearfix">
+                        <c:forEach var="author" items="${users}">
+                          <c:if test="${author.fullName == item.createdby}">
+                            <figure class="author-figure mb-0 mr-3 float-left"><img src="${author.avatar}" alt="Image" class="img-fluid"></figure>
+                          </c:if>
+                        </c:forEach>
+
+                        <span class="d-inline-block mt-1">By <a href="#">${item.createdby}</a></span>
+                        <span>&nbsp;-&nbsp; <fmt:formatDate type = "date" value = "${item.createddate}" /> - <a href="#">${item.view}</a> views</span>
+                      </div>
+
+                      <p>${item.shortdescription}</p>
+                      <p><a href="<c:url value='/post?id=${item.id}'/>">Read More</a></p>
+                    </div>
+                  </div>
                 </div>
-                
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-                  <p><a href="#">Read More</a></p>
-                </div>
-              </div>
+              </c:forEach>
             </div>
-            <div class="col-lg-4 mb-4">
-              <div class="entry2">
-                <a href="single.html"><img src="<c:url value="/template/web/images/img_3.jpg"/>" alt="Image" class="img-fluid rounded"></a>
-                <div class="excerpt">
-                <span class="post-category text-white bg-warning mb-3">Travel</span>
-  
-                <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                  <figure class="author-figure mb-0 mr-3 float-left"><img src="<c:url value="/template/web/images/person_1.jpg"/>" alt="Image" class="img-fluid"></figure>
-                  <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                  <span>&nbsp;-&nbsp; July 19, 2019</span>
-                </div>
-                
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-                  <p><a href="#">Read More</a></p>
-                </div>
-              </div>
-            </div>
-  
-  
-            <div class="col-lg-4 mb-4">
-              <div class="entry2">
-                <a href="single.html"><img src="<c:url value="/template/web/images/img_1.jpg"/>" alt="Image" class="img-fluid rounded"></a>
-                <div class="excerpt">
-                <span class="post-category text-white bg-secondary mb-3">Politics</span>
-  
-                <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                  <figure class="author-figure mb-0 mr-3 float-left"><img src="<c:url value="/template/web/images/person_1.jpg"/>" alt="Image" class="img-fluid"></figure>
-                  <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                  <span>&nbsp;-&nbsp; July 19, 2019</span>
-                </div>
-                
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-                  <p><a href="#">Read More</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-              <div class="entry2">
-                <a href="single.html"><img src="<c:url value="/template/web/images/img_2.jpg"/>" alt="Image" class="img-fluid rounded"></a>
-                <div class="excerpt">
-                <span class="post-category text-white bg-success mb-3">Nature</span>
-  
-                <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                  <figure class="author-figure mb-0 mr-3 float-left"><img src="<c:url value="/template/web/images/person_1.jpg"/>" alt="Image" class="img-fluid"></figure>
-                  <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                  <span>&nbsp;-&nbsp; July 19, 2019</span>
-                </div>
-                
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-                  <p><a href="#">Read More</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-              <div class="entry2">
-                <a href="single.html"><img src="<c:url value="/template/web/images/img_4.jpg"/>" alt="Image" class="img-fluid rounded"></a>
-                <div class="excerpt">
-                <span class="post-category text-white bg-danger mb-3">Sports</span>
-  
-                <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                  <figure class="author-figure mb-0 mr-3 float-left"><img src="<c:url value="/template/web/images/person_1.jpg"/>" alt="Image" class="img-fluid"></figure>
-                  <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                  <span>&nbsp;-&nbsp; July 19, 2019</span>
-                </div>
-                
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-                  <p><a href="#">Read More</a></p>
-                </div>
-              </div>
-            </div>
-  
-  
-            <div class="col-lg-4 mb-4">
-              <div class="entry2">
-                <a href="single.html"><img src="<c:url value="/template/web/images/img_1.jpg"/>" alt="Image" class="img-fluid rounded"></a>
-                <div class="excerpt">
-                <span class="post-category text-white bg-success mb-3">Nature</span>
-  
-                <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                  <figure class="author-figure mb-0 mr-3 float-left"><img src="<c:url value="/template/web/images/person_1.jpg"/>" alt="Image" class="img-fluid"></figure>
-                  <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                  <span>&nbsp;-&nbsp; July 19, 2019</span>
-                </div>
-                
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-                  <p><a href="#">Read More</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-              <div class="entry2">
-                <a href="single.html"><img src="<c:url value="/template/web/images/img_2.jpg"/>" alt="Image" class="img-fluid rounded"></a>
-                <div class="excerpt">
-                <span class="post-category text-white bg-danger mb-3">Sports</span>
-                <span class="post-category text-white bg-secondary mb-3">Tech</span>
-  
-                <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                  <figure class="author-figure mb-0 mr-3 float-left"><img src="<c:url value="/template/web/images/person_1.jpg"/>" alt="Image" class="img-fluid"></figure>
-                  <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                  <span>&nbsp;-&nbsp; July 19, 2019</span>
-                </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-                  <p><a href="#">Read More</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-              <div class="entry2">
-                <a href="single.html"><img src="<c:url value="/template/web/images/img_4.jpg"/>" alt="Image" class="img-fluid rounded"></a>
-                <div class="excerpt">
-                <span class="post-category text-white bg-danger mb-3">Sports</span>
-                <span class="post-category text-white bg-warning mb-3">Lifestyle</span>
-  
-                <h2><a href="single.html">The AI magically removes moving objects from videos.</a></h2>
-                <div class="post-meta align-items-center text-left clearfix">
-                  <figure class="author-figure mb-0 mr-3 float-left"><img src="<c:url value="/template/web/images/person_1.jpg"/>" alt="Image" class="img-fluid"></figure>
-                  <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                  <span>&nbsp;-&nbsp; July 19, 2019</span>
-                </div>
-                
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
-                  <p><a href="#">Read More</a></p>
-                </div>
+            <input type="hidden" value="" id="page" name="page"/>
+            <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
+            <input type="hidden" value="" id="sortName" name="sortName"/>
+            <input type="hidden" value="" id="sortBy" name="sortBy"/>
+            <input type="hidden" value="" id="type" name="type"/>
+            <div class="row text-center pt-5 border-top">
+              <div class="col-md-12">
+                <ul class="custom-pagination" id="pagination"></ul>
               </div>
             </div>
           </div>
-          <div class="row text-center pt-5 border-top">
-            <div class="col-md-12">
-              <div class="custom-pagination">
-                <span>1</span>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <span>...</span>
-                <a href="#">15</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
+
+
   
       <div class="site-section bg-light">
         <div class="container">
@@ -317,5 +185,29 @@
           </div>
         </div>
       </div>
+
+    <script>
+      var totalPages = ${model.totalPage};
+      var currentPage = ${model.page};
+      var limit = 10;
+      $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+          totalPages: totalPages,
+          visiblePages: 10,
+          startPage: currentPage,
+          onPageClick: function (event, page) {
+            if (currentPage != page) {
+              $('#maxPageItem').val(limit);
+              $('#page').val(page);
+              $('#sortName').val('title');
+              $('#sortBy').val('desc');
+              $('#type').val('list');
+              $('#formSubmit').submit();
+            }
+          }
+        });
+      });
+
+    </script>
 </body>
 </html>

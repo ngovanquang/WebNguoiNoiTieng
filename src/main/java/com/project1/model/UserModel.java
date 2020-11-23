@@ -8,7 +8,34 @@ public class UserModel extends AbstractModel<UserModel> {
 	private int status;
 	private Long roleId;
 	private RoleModel role = new RoleModel();
-	
+	private String avatar;
+	private String profile;
+	private String roleName;
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
 	public String getUserName() {
 		return userName;
 	}

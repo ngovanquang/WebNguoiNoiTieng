@@ -12,7 +12,11 @@
     <!-- END sidebar-box -->
     <div class="sidebar-box">
         <div class="bio text-center">
-            <img src="<c:url value="/template/web/images/person_2.jpg"/>" alt="Image Placeholder" class="img-fluid mb-5">
+            <c:forEach var="celebrity" items="celebrities">
+                <c:if test="${celebrity.id == model.celebrityid}">
+                    <img src="<c:url value='${celebrity.avatar}'/>" alt="Image Placeholder" class="img-fluid mb-5">
+                </c:if>
+            </c:forEach>
             <div class="bio-body">
                 <h2>Craig David</h2>
                 <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>

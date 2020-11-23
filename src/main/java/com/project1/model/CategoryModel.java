@@ -4,7 +4,16 @@ public class CategoryModel extends AbstractModel<CategoryModel> {
 	
 	private String code;
 	private String name;
-	
+	private Integer amount;
+
+	public Integer getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
+	}
+
 	public String getCode() {
 		return code;
 	}

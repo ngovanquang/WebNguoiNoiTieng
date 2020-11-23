@@ -7,10 +7,10 @@ import java.util.List;
 public class AbstractModel<T> {
 	
 	private Long id;
-	private Timestamp createdDate;
-	private Timestamp modifiedDate;
-	private String createdBy;
-	private String modifiedBy;
+	private Timestamp createddate;
+	private Timestamp modifieddate;
+	private String createdby;
+	private String modifiedby;
 	private long[] ids;
 	private List<T> listResult = new ArrayList<>();
 	private Integer page;
@@ -29,30 +29,39 @@ public class AbstractModel<T> {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Timestamp getCreatedDate() {
-		return createdDate;
+
+	public Timestamp getCreateddate() {
+		return createddate;
 	}
-	public void setCreatedDate(Timestamp createdDate) {
-		this.createdDate = createdDate;
+
+	public void setCreateddate(Timestamp createddate) {
+		this.createddate = createddate;
 	}
-	public Timestamp getModifiedDate() {
-		return modifiedDate;
+
+	public Timestamp getModifieddate() {
+		return modifieddate;
 	}
-	public void setModifiedDate(Timestamp modifiedDate) {
-		this.modifiedDate = modifiedDate;
+
+	public void setModifieddate(Timestamp modifieddate) {
+		this.modifieddate = modifieddate;
 	}
-	public String getCreatedBy() {
-		return createdBy;
+
+	public String getCreatedby() {
+		return createdby;
 	}
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
+
+	public void setCreatedby(String createdby) {
+		this.createdby = createdby;
 	}
-	public String getModifiedBy() {
-		return modifiedBy;
+
+	public String getModifiedby() {
+		return modifiedby;
 	}
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
+
+	public void setModifiedby(String modifiedby) {
+		this.modifiedby = modifiedby;
 	}
+
 	public long[] getIds() {
 		return ids;
 	}

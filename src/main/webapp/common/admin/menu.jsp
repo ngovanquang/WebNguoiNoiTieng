@@ -36,17 +36,36 @@
     <ul class="nav nav-list">
         <li >
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text"></span>
-                Quản lý bài viết
+                <i class="menu-icon fa fa-pencil"></i>
+                <span class="menu-text">Quản lý bài viết</span>
+
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
                 <li>
-                    <a href='<c:url value="/admin-new?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc"/>'>
+                    <a href='<c:url value="/admin-new?type=list&page=1&maxPageItem=8&sortName=title&sortBy=desc"/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
                         DS bài viết
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+
+        <li >
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-users"></i>
+                <span class="menu-text">Quản lý người dùng</span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                <li>
+                    <a href='<c:url value="/admin-users?type=list&page=1&maxPageItem=8&sortName=fullName&sortBy=desc"/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        DS Tài khoản
                     </a>
                     <b class="arrow"></b>
                 </li>
